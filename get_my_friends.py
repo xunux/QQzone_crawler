@@ -17,12 +17,13 @@ class Get_friends_number(object):
 
         key = True
         position = 0
-        while key:
+        if key:
             url = self.base_url + '&offset=' + str(position)
             referer = 'http://qzs.qq.com/qzone/v8/pages/setting/visit_v8.html'
             self.headers['Referer'] = referer
 
             print("\tDealing with position\t%d." % position)
+            print("url %s" % url)
             res = requests.get(url, headers=self.headers)
             html = res.text
             with open('friends/offset' + str(position) + '.json', 'w') as f:
@@ -35,10 +36,10 @@ class Get_friends_number(object):
             if "请先登录" in con:
                 print("登录失败，请检查原因")
                 key = False
-                break
+                # break
             if '''"uinlist":[]''' in con:
                 print("Get friends Finish")
-                break
+                # break
                 key = False
 
             position += 50

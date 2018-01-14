@@ -34,7 +34,7 @@ class Get_moods(object):
             print(url)
             res = self.session.get(url, headers = self.headers)
             con = res.text
-            with open('mood_result/' + qqnumber + '/' + str(pos), 'w') as f:
+            with open('mood_result/' + qqnumber + '/' + str(pos), 'w', encoding='utf-8') as f:
                 f.write(con)
 
             if '''"msglist":null''' in con:
@@ -93,7 +93,7 @@ class Get_moods_start(object):
         while qnumber_list != []:
             save_back_qnumber = qnumber_list[:]
             item = qnumber_list.pop()
-            qq = item['data']
+            qq = str(item['uin'])
             print("Dealing with:\t%s" % qq)
 
             start_time = time.ctime()

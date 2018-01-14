@@ -20,7 +20,7 @@ class exact_data_from_result(object):
                 source = f.read()
                 con_dict = source[75:-4].replace('\n', '')
                 con_json = json.loads(con_dict)
-                friends_list = con_json['uinlist']
+                friends_list = con_json['items_list']
 
                 # Get each item from friends list, each item is a dict
                 for item in friends_list:
